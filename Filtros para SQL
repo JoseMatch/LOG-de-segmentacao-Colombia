@@ -1,0 +1,9 @@
+Data extension: CTM_T_PA_COL_ELO
+CD_NIVEL_INATIVIDADE  (Inactivas, o valor vai de 0 - 6)
+CD_ESTRUT_COMERCIAL_SUP (Gerencias)
+CD_NVL_PLAN_CREC (Nivel, 1-Bronce | 2-Plata | 3-Oro | 5-Zafira | 6-Diamante)
+
+Excluir Inicios de Ciclo
+CD_CONSULTORA NOT IN (
+SELECT CD_PESSOA FROM  ENT.SISDMI_T_DW_F_PERFIL_CN 
+WHERE CD_SK_PAIS='7' AND QT_INICIOS=1 AND CD_SK_CICLO IN('202417','202416','202415','202414')) /*Excluir inicios de Ciclo*/
