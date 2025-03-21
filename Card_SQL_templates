@@ -1,0 +1,23 @@
+SELECT P.CD_CONSULTORA AS COD_CN, 
+'CO00001524' AS CD_CAMPAIGNCODE, 
+'https://image.hello.natura.com/lib/fe3611717164047a771773/m/1/COL_7997_CARD.jpg' AS URL_IMAGEM,
+P.CD_PAIS,
+'¡Llega nuestro Entérate Líder de Ciclo 4!' AS TITLE,
+'Ingresa <a href=''https://*.PDF''>aquí</a> y descubre todas las novedades que tenemos para que tu y tus Consultores/as de Belleza ganen +.' AS SUMMARY,
+'Ingresa <a href=''https://*.PDF''>aquí</a> y descubre todas las novedades que tenemos para que tu y tus Consultores/as de Belleza ganen +.' AS DESCRIPTION,
+'GERADO' AS STATUS,
+CONCAT('1583879034', P.CD_CONSULTORA) AS ID_CARD,
+'INFORMATION' AS TYPE_CARD,
+'1583879034' AS CD_TREATMENTCODE,
+CONCAT('dismiss: Eliminar',CHAR(59),' share: Compartir',CHAR(59),' snooze: Recordar Después') as BUTTONS,
+FORMAT(GETDATE(),'MM/dd/yyyy HH:mm:ss') AS DT_INICIO_VIGENCIA,
+FORMAT(P.DT_FIM,'MM/dd/yyyy HH:mm:ss') as DT_FIM_VIGENCIA,
+FORMAT(GETDATE(),'MM/dd/yyyy HH:mm:ss') AS CREATED_AT, 
+FORMAT(GETDATE(),'MM/dd/yyyy HH:mm:ss')  AS UPDATED_AT,
+'CB_COL_PON_202500_M0_P99_CARD_N7997_S' AS DC_COMMENT,
+P.ID_CONTACT,
+'INSERT' AS OPERATION
+FROM CTM_T_PA_COL_ELO P
+WHERE P.CD_CONSULTORA IN(SELECT CD_CONSULTORA FROM COL_7997_BASE) 
+AND P.CD_CONSULTORA NOT IN (SELECT COD_CN FROM t_cards_final_v4_consulta_dados WHERE CD_CAMPAIGNCODE='CO00001524' AND CD_TREATMENTCODE='1583879034')
+
